@@ -178,6 +178,18 @@
 
   renderCards();
 
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  navToggle?.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  navLinks?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
   /* Sticky nav shrink on scroll */
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
